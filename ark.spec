@@ -4,7 +4,7 @@
 #
 Name     : ark
 Version  : 18.08.3
-Release  : 10
+Release  : 11
 URL      : https://github.com/KDE/ark/archive/v18.08.3.tar.gz
 Source0  : https://github.com/KDE/ark/archive/v18.08.3.tar.gz
 Summary  : No detailed summary available
@@ -101,7 +101,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542060534
+export SOURCE_DATE_EPOCH=1542072140
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -109,7 +109,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1542060534
+export SOURCE_DATE_EPOCH=1542072140
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp COPYING %{buildroot}/usr/share/package-licenses/ark/COPYING
@@ -123,7 +123,7 @@ popd
 
 %files abi
 %defattr(-,root,root,-)
-/usr/share/abi/libkerfuffle.so.18.8.3.abi
+/usr/share/abi/libkerfuffle.so.18.abi
 
 %files bin
 %defattr(-,root,root,-)
