@@ -4,7 +4,7 @@
 #
 Name     : ark
 Version  : 18.11.80
-Release  : 12
+Release  : 13
 URL      : https://github.com/KDE/ark/archive/v18.11.80.tar.gz
 Source0  : https://github.com/KDE/ark/archive/v18.11.80.tar.gz
 Summary  : No detailed summary available
@@ -94,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542511110
+export SOURCE_DATE_EPOCH=1543345944
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -102,7 +102,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1542511110
+export SOURCE_DATE_EPOCH=1543345944
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp COPYING %{buildroot}/usr/share/package-licenses/ark/COPYING
@@ -130,7 +130,7 @@ popd
 /usr/share/kservicetypes5/kerfufflePlugin.desktop
 /usr/share/kxmlgui5/ark/ark_viewer.rc
 /usr/share/metainfo/org.kde.ark.appdata.xml
-/usr/share/mime/packages/kerfuffle.xml
+/usr/share/mime-packages/kerfuffle.xml
 /usr/share/xdg/ark.categories
 
 %files doc
