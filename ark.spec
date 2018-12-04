@@ -4,7 +4,7 @@
 #
 Name     : ark
 Version  : 18.11.90
-Release  : 14
+Release  : 15
 URL      : https://github.com/KDE/ark/archive/v18.11.90.tar.gz
 Source0  : https://github.com/KDE/ark/archive/v18.11.90.tar.gz
 Summary  : No detailed summary available
@@ -94,15 +94,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543743143
+export SOURCE_DATE_EPOCH=1543919006
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1543743143
+export SOURCE_DATE_EPOCH=1543919006
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp COPYING %{buildroot}/usr/share/package-licenses/ark/COPYING
