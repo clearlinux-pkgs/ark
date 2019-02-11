@@ -4,16 +4,17 @@
 #
 Name     : ark
 Version  : 18.12.2
-Release  : 19
-URL      : https://github.com/KDE/ark/archive/v18.12.2.tar.gz
-Source0  : https://github.com/KDE/ark/archive/v18.12.2.tar.gz
-Summary  : Archiving Tool
+Release  : 20
+URL      : https://download.kde.org/stable/applications/18.12.2/src/ark-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/ark-18.12.2.tar.xz
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1 LGPL-3.0
 Requires: ark-bin = %{version}-%{release}
 Requires: ark-data = %{version}-%{release}
 Requires: ark-lib = %{version}-%{release}
 Requires: ark-license = %{version}-%{release}
+Requires: ark-locales = %{version}-%{release}
 Requires: ark-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
@@ -78,6 +79,14 @@ Group: Default
 license components for the ark package.
 
 
+%package locales
+Summary: locales components for the ark package.
+Group: Default
+
+%description locales
+locales components for the ark package.
+
+
 %package man
 Summary: man components for the ark package.
 Group: Default
@@ -94,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549642475
+export SOURCE_DATE_EPOCH=1549858795
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -102,7 +111,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549642475
+export SOURCE_DATE_EPOCH=1549858795
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp COPYING %{buildroot}/usr/share/package-licenses/ark/COPYING
@@ -110,6 +119,7 @@ cp COPYING.icons %{buildroot}/usr/share/package-licenses/ark/COPYING.icons
 pushd clr-build
 %make_install
 popd
+%find_lang ark
 
 %files
 %defattr(-,root,root,-)
@@ -135,6 +145,9 @@ popd
 
 %files doc
 %defattr(0644,root,root,0755)
+/usr/share/doc/HTML/de/ark/ark-mainwindow.png
+/usr/share/doc/HTML/de/ark/index.cache.bz2
+/usr/share/doc/HTML/de/ark/index.docbook
 /usr/share/doc/HTML/en/ark/ark-comment.png
 /usr/share/doc/HTML/en/ark/ark-mainwindow.png
 /usr/share/doc/HTML/en/ark/create-archive.png
@@ -142,6 +155,40 @@ popd
 /usr/share/doc/HTML/en/ark/extract-dialog.png
 /usr/share/doc/HTML/en/ark/index.cache.bz2
 /usr/share/doc/HTML/en/ark/index.docbook
+/usr/share/doc/HTML/es/ark/index.cache.bz2
+/usr/share/doc/HTML/es/ark/index.docbook
+/usr/share/doc/HTML/et/ark/index.cache.bz2
+/usr/share/doc/HTML/et/ark/index.docbook
+/usr/share/doc/HTML/fr/ark/ark-mainwindow.png
+/usr/share/doc/HTML/fr/ark/index.cache.bz2
+/usr/share/doc/HTML/fr/ark/index.docbook
+/usr/share/doc/HTML/gl/ark/index.cache.bz2
+/usr/share/doc/HTML/gl/ark/index.docbook
+/usr/share/doc/HTML/it/ark/index.cache.bz2
+/usr/share/doc/HTML/it/ark/index.docbook
+/usr/share/doc/HTML/nl/ark/index.cache.bz2
+/usr/share/doc/HTML/nl/ark/index.docbook
+/usr/share/doc/HTML/pl/ark/index.cache.bz2
+/usr/share/doc/HTML/pl/ark/index.docbook
+/usr/share/doc/HTML/pt/ark/index.cache.bz2
+/usr/share/doc/HTML/pt/ark/index.docbook
+/usr/share/doc/HTML/pt_BR/ark/ark-mainwindow.png
+/usr/share/doc/HTML/pt_BR/ark/create-protected-archive.png
+/usr/share/doc/HTML/pt_BR/ark/index.cache.bz2
+/usr/share/doc/HTML/pt_BR/ark/index.docbook
+/usr/share/doc/HTML/ru/ark/index.cache.bz2
+/usr/share/doc/HTML/ru/ark/index.docbook
+/usr/share/doc/HTML/sr/ark/index.cache.bz2
+/usr/share/doc/HTML/sr/ark/index.docbook
+/usr/share/doc/HTML/sv/ark/index.cache.bz2
+/usr/share/doc/HTML/sv/ark/index.docbook
+/usr/share/doc/HTML/uk/ark/ark-comment.png
+/usr/share/doc/HTML/uk/ark/ark-mainwindow.png
+/usr/share/doc/HTML/uk/ark/create-archive.png
+/usr/share/doc/HTML/uk/ark/create-protected-archive.png
+/usr/share/doc/HTML/uk/ark/extract-dialog.png
+/usr/share/doc/HTML/uk/ark/index.cache.bz2
+/usr/share/doc/HTML/uk/ark/index.docbook
 
 %files lib
 %defattr(-,root,root,-)
@@ -169,4 +216,20 @@ popd
 
 %files man
 %defattr(0644,root,root,0755)
+/usr/share/man/ca/man1/ark.1
+/usr/share/man/de/man1/ark.1
+/usr/share/man/es/man1/ark.1
+/usr/share/man/fr/man1/ark.1
+/usr/share/man/gl/man1/ark.1
+/usr/share/man/it/man1/ark.1
 /usr/share/man/man1/ark.1
+/usr/share/man/nl/man1/ark.1
+/usr/share/man/pt/man1/ark.1
+/usr/share/man/pt_BR/man1/ark.1
+/usr/share/man/sr/man1/ark.1
+/usr/share/man/sv/man1/ark.1
+/usr/share/man/uk/man1/ark.1
+
+%files locales -f ark.lang
+%defattr(-,root,root,-)
+
