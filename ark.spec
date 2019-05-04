@@ -6,11 +6,11 @@
 #
 Name     : ark
 Version  : 19.04.0
-Release  : 23
+Release  : 24
 URL      : https://download.kde.org/stable/applications/19.04.0/src/ark-19.04.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.04.0/src/ark-19.04.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/19.04.0/src/ark-19.04.0.tar.xz.sig
-Summary  : Archiving Tool
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1 LGPL-3.0
 Requires: ark-bin = %{version}-%{release}
@@ -105,15 +105,22 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555597349
+export SOURCE_DATE_EPOCH=1556994415
 mkdir -p clr-build
 pushd clr-build
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555597349
+export SOURCE_DATE_EPOCH=1556994415
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp COPYING %{buildroot}/usr/share/package-licenses/ark/COPYING
