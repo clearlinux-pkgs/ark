@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ark
-Version  : 19.04.1
-Release  : 25
-URL      : https://download.kde.org/stable/applications/19.04.1/src/ark-19.04.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.1/src/ark-19.04.1.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.1/src/ark-19.04.1.tar.xz.sig
+Version  : 19.04.2
+Release  : 26
+URL      : https://download.kde.org/stable/applications/19.04.2/src/ark-19.04.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.2/src/ark-19.04.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.2/src/ark-19.04.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1 LGPL-3.0
@@ -98,14 +98,14 @@ man components for the ark package.
 
 
 %prep
-%setup -q -n ark-19.04.1
+%setup -q -n ark-19.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557430265
+export SOURCE_DATE_EPOCH=1559876229
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -120,7 +120,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557430265
+export SOURCE_DATE_EPOCH=1559876229
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp COPYING %{buildroot}/usr/share/package-licenses/ark/COPYING
@@ -202,7 +202,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libkerfuffle.so.19
-/usr/lib64/libkerfuffle.so.19.4.1
+/usr/lib64/libkerfuffle.so.19.4.2
 /usr/lib64/qt5/plugins/arkpart.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
