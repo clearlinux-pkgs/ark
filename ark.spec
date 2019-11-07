@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ark
-Version  : 19.08.2
-Release  : 30
-URL      : https://download.kde.org/stable/applications/19.08.2/src/ark-19.08.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.2/src/ark-19.08.2.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.2/src/ark-19.08.2.tar.xz.sig
+Version  : 19.08.3
+Release  : 31
+URL      : https://download.kde.org/stable/applications/19.08.3/src/ark-19.08.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.3/src/ark-19.08.3.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.3/src/ark-19.08.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1 LGPL-3.0
@@ -98,14 +98,14 @@ man components for the ark package.
 
 
 %prep
-%setup -q -n ark-19.08.2
+%setup -q -n ark-19.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570730586
+export SOURCE_DATE_EPOCH=1573155037
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -122,11 +122,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570730586
+export SOURCE_DATE_EPOCH=1573155037
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
-cp COPYING %{buildroot}/usr/share/package-licenses/ark/COPYING
-cp COPYING.icons %{buildroot}/usr/share/package-licenses/ark/COPYING.icons
+cp %{_builddir}/ark-19.08.3/COPYING %{buildroot}/usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/ark-19.08.3/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/d4ca5d36d06f97622e54feed256d8bff1c07db4d
 pushd clr-build
 %make_install
 popd
@@ -204,7 +204,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libkerfuffle.so.19
-/usr/lib64/libkerfuffle.so.19.8.2
+/usr/lib64/libkerfuffle.so.19.8.3
 /usr/lib64/qt5/plugins/arkpart.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
@@ -222,8 +222,8 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/ark/COPYING
-/usr/share/package-licenses/ark/COPYING.icons
+/usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
+/usr/share/package-licenses/ark/d4ca5d36d06f97622e54feed256d8bff1c07db4d
 
 %files man
 %defattr(0644,root,root,0755)
