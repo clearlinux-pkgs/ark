@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ark
-Version  : 19.12.1
-Release  : 33
-URL      : https://download.kde.org/stable/release-service/19.12.1/src/ark-19.12.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.1/src/ark-19.12.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.1/src/ark-19.12.1.tar.xz.sig
+Version  : 19.12.2
+Release  : 34
+URL      : https://download.kde.org/stable/release-service/19.12.2/src/ark-19.12.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.2/src/ark-19.12.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.2/src/ark-19.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1 LGPL-3.0
@@ -98,15 +98,15 @@ man components for the ark package.
 
 
 %prep
-%setup -q -n ark-19.12.1
-cd %{_builddir}/ark-19.12.1
+%setup -q -n ark-19.12.2
+cd %{_builddir}/ark-19.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578596874
+export SOURCE_DATE_EPOCH=1581008836
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -123,11 +123,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1578596874
+export SOURCE_DATE_EPOCH=1581008836
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
-cp %{_builddir}/ark-19.12.1/COPYING %{buildroot}/usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/ark-19.12.1/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/d4ca5d36d06f97622e54feed256d8bff1c07db4d
+cp %{_builddir}/ark-19.12.2/COPYING %{buildroot}/usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/ark-19.12.2/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/d4ca5d36d06f97622e54feed256d8bff1c07db4d
 pushd clr-build
 %make_install
 popd
@@ -205,7 +205,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libkerfuffle.so.19
-/usr/lib64/libkerfuffle.so.19.12.1
+/usr/lib64/libkerfuffle.so.19.12.2
 /usr/lib64/qt5/plugins/arkpart.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
