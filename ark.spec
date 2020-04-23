@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ark
-Version  : 19.12.3
-Release  : 35
-URL      : https://download.kde.org/stable/release-service/19.12.3/src/ark-19.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.3/src/ark-19.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.3/src/ark-19.12.3.tar.xz.sig
+Version  : 20.04.0
+Release  : 36
+URL      : https://download.kde.org/stable/release-service/20.04.0/src/ark-20.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.0/src/ark-20.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.0/src/ark-20.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.1 LGPL-3.0
+License  : GPL-2.0
 Requires: ark-bin = %{version}-%{release}
 Requires: ark-data = %{version}-%{release}
 Requires: ark-lib = %{version}-%{release}
@@ -22,7 +22,6 @@ Requires: ark-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : bzip2-dev
-BuildRequires : extra-cmake-modules shared-mime-info
 BuildRequires : libarchive-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libzip)
@@ -98,15 +97,15 @@ man components for the ark package.
 
 
 %prep
-%setup -q -n ark-19.12.3
-cd %{_builddir}/ark-19.12.3
+%setup -q -n ark-20.04.0
+cd %{_builddir}/ark-20.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583430512
+export SOURCE_DATE_EPOCH=1587669884
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -123,11 +122,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1583430512
+export SOURCE_DATE_EPOCH=1587669884
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
-cp %{_builddir}/ark-19.12.3/COPYING %{buildroot}/usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/ark-19.12.3/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/d4ca5d36d06f97622e54feed256d8bff1c07db4d
+cp %{_builddir}/ark-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
@@ -152,7 +150,6 @@ popd
 /usr/share/kservicetypes5/kerfufflePlugin.desktop
 /usr/share/kxmlgui5/ark/ark_viewer.rc
 /usr/share/metainfo/org.kde.ark.appdata.xml
-/usr/share/mime-packages/kerfuffle.xml
 /usr/share/qlogging-categories5/ark.categories
 
 %files doc
@@ -204,8 +201,8 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkerfuffle.so.19
-/usr/lib64/libkerfuffle.so.19.12.3
+/usr/lib64/libkerfuffle.so.20
+/usr/lib64/libkerfuffle.so.20.4.0
 /usr/lib64/qt5/plugins/arkpart.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
@@ -224,7 +221,6 @@ popd
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
-/usr/share/package-licenses/ark/d4ca5d36d06f97622e54feed256d8bff1c07db4d
 
 %files man
 %defattr(0644,root,root,0755)
