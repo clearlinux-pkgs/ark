@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ark
-Version  : 20.08.2
-Release  : 42
-URL      : https://download.kde.org/stable/release-service/20.08.2/src/ark-20.08.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.08.2/src/ark-20.08.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.08.2/src/ark-20.08.2.tar.xz.sig
+Version  : 20.08.3
+Release  : 43
+URL      : https://download.kde.org/stable/release-service/20.08.3/src/ark-20.08.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.08.3/src/ark-20.08.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.08.3/src/ark-20.08.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-3.0
@@ -99,15 +99,15 @@ man components for the ark package.
 
 
 %prep
-%setup -q -n ark-20.08.2
-cd %{_builddir}/ark-20.08.2
+%setup -q -n ark-20.08.3
+cd %{_builddir}/ark-20.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602686865
+export SOURCE_DATE_EPOCH=1604609649
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -123,11 +123,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1602686865
+export SOURCE_DATE_EPOCH=1604609649
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
-cp %{_builddir}/ark-20.08.2/COPYING %{buildroot}/usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/ark-20.08.2/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01
+cp %{_builddir}/ark-20.08.3/COPYING %{buildroot}/usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/ark-20.08.3/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01
 pushd clr-build
 %make_install
 popd
@@ -209,7 +209,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libkerfuffle.so.20
-/usr/lib64/libkerfuffle.so.20.8.2
+/usr/lib64/libkerfuffle.so.20.8.3
 /usr/lib64/qt5/plugins/arkpart.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
