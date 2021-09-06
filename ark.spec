@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ark
-Version  : 21.04.2
-Release  : 48
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/ark-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/ark-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/ark-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 49
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/ark-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/ark-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/ark-21.08.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-3.0
@@ -26,6 +26,7 @@ BuildRequires : extra-cmake-modules-data
 BuildRequires : libarchive-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libzip)
+BuildRequires : pkgconfig(libzstd)
 BuildRequires : qtbase-dev
 BuildRequires : xz-dev
 BuildRequires : zlib-dev
@@ -99,35 +100,35 @@ man components for the ark package.
 
 
 %prep
-%setup -q -n ark-21.04.2
-cd %{_builddir}/ark-21.04.2
+%setup -q -n ark-21.08.1
+cd %{_builddir}/ark-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623359431
+export SOURCE_DATE_EPOCH=1630904299
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623359431
+export SOURCE_DATE_EPOCH=1630904299
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
-cp %{_builddir}/ark-21.04.2/COPYING %{buildroot}/usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/ark-21.04.2/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01
+cp %{_builddir}/ark-21.08.1/COPYING %{buildroot}/usr/share/package-licenses/ark/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/ark-21.08.1/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01
 pushd clr-build
 %make_install
 popd
@@ -208,8 +209,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libkerfuffle.so.21
-/usr/lib64/libkerfuffle.so.21.4.2
-/usr/lib64/qt5/plugins/arkpart.so
+/usr/lib64/libkerfuffle.so.21.08.1
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cliunarchiver.so
@@ -220,9 +220,11 @@ popd
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libgz.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libxz.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libzip.so
+/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libzstd.so
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/compressfileitemaction.so
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/extractfileitemaction.so
 /usr/lib64/qt5/plugins/kf5/kio_dnd/extracthere.so
+/usr/lib64/qt5/plugins/kf5/parts/arkpart.so
 
 %files license
 %defattr(0644,root,root,0755)
