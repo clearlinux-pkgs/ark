@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ark
-Version  : 22.04.0
-Release  : 57
-URL      : https://download.kde.org/stable/release-service/22.04.0/src/ark-22.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.04.0/src/ark-22.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.04.0/src/ark-22.04.0.tar.xz.sig
+Version  : 22.04.1
+Release  : 58
+URL      : https://download.kde.org/stable/release-service/22.04.1/src/ark-22.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.1/src/ark-22.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.1/src/ark-22.04.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 GPL-2.0 LGPL-3.0 MIT
@@ -100,15 +100,15 @@ man components for the ark package.
 
 
 %prep
-%setup -q -n ark-22.04.0
-cd %{_builddir}/ark-22.04.0
+%setup -q -n ark-22.04.1
+cd %{_builddir}/ark-22.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1650663349
+export SOURCE_DATE_EPOCH=1652641350
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -124,15 +124,15 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1650663349
+export SOURCE_DATE_EPOCH=1652641350
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
-cp %{_builddir}/ark-22.04.0/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01
-cp %{_builddir}/ark-22.04.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/ark/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee
-cp %{_builddir}/ark-22.04.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/ark/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/ark-22.04.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ark/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/ark-22.04.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/ark/49e61f7864169f2e356c11a17422d7d20d74b40f
-cp %{_builddir}/ark-22.04.0/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/ark/81e12d0c07782abcf558af7aa19846e3e2606a70
+cp %{_builddir}/ark-22.04.1/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01
+cp %{_builddir}/ark-22.04.1/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/ark/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee
+cp %{_builddir}/ark-22.04.1/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/ark/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/ark-22.04.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ark/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/ark-22.04.1/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/ark/49e61f7864169f2e356c11a17422d7d20d74b40f
+cp %{_builddir}/ark-22.04.1/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/ark/81e12d0c07782abcf558af7aa19846e3e2606a70
 pushd clr-build
 %make_install
 popd
@@ -160,6 +160,8 @@ popd
 
 %files doc
 %defattr(0644,root,root,0755)
+/usr/share/doc/HTML/ca/ark/index.cache.bz2
+/usr/share/doc/HTML/ca/ark/index.docbook
 /usr/share/doc/HTML/de/ark/ark-mainwindow.png
 /usr/share/doc/HTML/de/ark/index.cache.bz2
 /usr/share/doc/HTML/de/ark/index.docbook
@@ -213,7 +215,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libkerfuffle.so.22
-/usr/lib64/libkerfuffle.so.22.04.0
+/usr/lib64/libkerfuffle.so.22.04.1
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cliunarchiver.so
