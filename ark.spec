@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ark
-Version  : 22.08.3
-Release  : 64
-URL      : https://download.kde.org/stable/release-service/22.08.3/src/ark-22.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.3/src/ark-22.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.3/src/ark-22.08.3.tar.xz.sig
+Version  : 22.12.0
+Release  : 65
+URL      : https://download.kde.org/stable/release-service/22.12.0/src/ark-22.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.12.0/src/ark-22.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.12.0/src/ark-22.12.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 GPL-2.0 LGPL-3.0 MIT
@@ -21,21 +21,15 @@ Requires: ark-locales = %{version}-%{release}
 Requires: ark-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : bzip2-dev
 BuildRequires : extra-cmake-modules-data
 BuildRequires : libarchive-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libzip)
-BuildRequires : pkgconfig(libzstd)
-BuildRequires : xz-dev
 BuildRequires : zlib-dev
 
 %description
-What is it
-----------
-Ark is a graphical file compression/decompression utility with support for multiple formats,
-including tar, gzip, bzip2, rar and zip, as well as CD-ROM images.
-Ark can be used to browse, extract, create, and modify archives.
+Test data for the cliunarchiver's unit tests.
+* The password for encrypted_entries.rar is 'asdasd' (without quotes).
 
 %package bin
 Summary: bin components for the ark package.
@@ -99,15 +93,15 @@ man components for the ark package.
 
 
 %prep
-%setup -q -n ark-22.08.3
-cd %{_builddir}/ark-22.08.3
+%setup -q -n ark-22.12.0
+cd %{_builddir}/ark-22.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667865756
+export SOURCE_DATE_EPOCH=1670519820
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -123,7 +117,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667865756
+export SOURCE_DATE_EPOCH=1670519820
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp %{_builddir}/ark-%{version}/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01 || :
@@ -152,10 +146,11 @@ popd
 /usr/share/icons/hicolor/48x48/apps/ark.png
 /usr/share/icons/hicolor/64x64/apps/ark.png
 /usr/share/icons/hicolor/scalable/apps/ark.svgz
-/usr/share/kservices5/ark_part.desktop
-/usr/share/kservicetypes5/kerfufflePlugin.desktop
+/usr/share/kconf_update/ark.upd
+/usr/share/kconf_update/ark_add_hamburgermenu_to_toolbar.sh
 /usr/share/metainfo/org.kde.ark.appdata.xml
 /usr/share/qlogging-categories5/ark.categories
+/usr/share/xdg/arkrc
 
 %files doc
 %defattr(0644,root,root,0755)
@@ -201,6 +196,8 @@ popd
 /usr/share/doc/HTML/ru/ark/index.docbook
 /usr/share/doc/HTML/sr/ark/index.cache.bz2
 /usr/share/doc/HTML/sr/ark/index.docbook
+/usr/share/doc/HTML/sr@latin/ark/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/ark/index.docbook
 /usr/share/doc/HTML/sv/ark/index.cache.bz2
 /usr/share/doc/HTML/sv/ark/index.docbook
 /usr/share/doc/HTML/uk/ark/ark-comment.png
@@ -214,18 +211,15 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libkerfuffle.so.22
-/usr/lib64/libkerfuffle.so.22.08.3
+/usr/lib64/libkerfuffle.so.22.12.0
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
+/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cliarj.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cliunarchiver.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clizip.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libarchive.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libarchive_readonly.so
-/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libbz2.so
-/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libgz.so
-/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libxz.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libzip.so
-/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libzstd.so
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/compressfileitemaction.so
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/extractfileitemaction.so
 /usr/lib64/qt5/plugins/kf5/kio_dnd/extracthere.so
@@ -253,6 +247,7 @@ popd
 /usr/share/man/pt/man1/ark.1
 /usr/share/man/pt_BR/man1/ark.1
 /usr/share/man/sr/man1/ark.1
+/usr/share/man/sr@latin/man1/ark.1
 /usr/share/man/sv/man1/ark.1
 /usr/share/man/uk/man1/ark.1
 
