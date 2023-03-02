@@ -633,6 +633,7 @@ libkerfuffle.so.22:_ZNK9Kerfuffle7Archive5Entry4sizeEv
 libkerfuffle.so.22:_ZNK9Kerfuffle7Archive5Entry5isDirEv
 libkerfuffle.so.22:_ZNK9Kerfuffle7Archive5Entry7entriesEv
 libkerfuffle.so.22:_ZNK9Kerfuffle7Archive5Entry8fullPathENS_10PathFormatE
+libkerfuffle.so.22:_ZNK9Kerfuffle7Archive5Entry8isSparseEv
 libkerfuffle.so.22:_ZNK9Kerfuffle7Archive5Entry8nameViewEv
 libkerfuffle.so.22:_ZNK9Kerfuffle7Archive5Entry9getParentEv
 libkerfuffle.so.22:_ZNK9Kerfuffle7Archive5EntryeqERKS1_
