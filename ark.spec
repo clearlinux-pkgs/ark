@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ark
-Version  : 23.04.0
-Release  : 70
-URL      : https://download.kde.org/stable/release-service/23.04.0/src/ark-23.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.0/src/ark-23.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.0/src/ark-23.04.0.tar.xz.sig
+Version  : 23.04.1
+Release  : 71
+URL      : https://download.kde.org/stable/release-service/23.04.1/src/ark-23.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.04.1/src/ark-23.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.04.1/src/ark-23.04.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 GPL-2.0 LGPL-3.0 MIT
@@ -97,31 +97,48 @@ man components for the ark package.
 
 
 %prep
-%setup -q -n ark-23.04.0
-cd %{_builddir}/ark-23.04.0
+%setup -q -n ark-23.04.1
+cd %{_builddir}/ark-23.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682022740
+export SOURCE_DATE_EPOCH=1684784150
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+%cmake ..
+make  %{?_smp_mflags}
+popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682022740
+export SOURCE_DATE_EPOCH=1684784150
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp %{_builddir}/ark-%{version}/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01 || :
@@ -130,16 +147,21 @@ cp %{_builddir}/ark-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/packa
 cp %{_builddir}/ark-%{version}/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ark/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
 cp %{_builddir}/ark-%{version}/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/ark/49e61f7864169f2e356c11a17422d7d20d74b40f || :
 cp %{_builddir}/ark-%{version}/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/ark/81e12d0c07782abcf558af7aa19846e3e2606a70 || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
 %find_lang ark
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/ark
 /usr/bin/ark
 
 %files data
@@ -216,8 +238,22 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/libkerfuffle.so.23
+/V3/usr/lib64/libkerfuffle.so.23.04.1
+/V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
+/V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cliarj.so
+/V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
+/V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cliunarchiver.so
+/V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clizip.so
+/V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libarchive.so
+/V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libarchive_readonly.so
+/V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_libzip.so
+/V3/usr/lib64/qt5/plugins/kf5/kfileitemaction/compressfileitemaction.so
+/V3/usr/lib64/qt5/plugins/kf5/kfileitemaction/extractfileitemaction.so
+/V3/usr/lib64/qt5/plugins/kf5/kio_dnd/extracthere.so
+/V3/usr/lib64/qt5/plugins/kf5/parts/arkpart.so
 /usr/lib64/libkerfuffle.so.23
-/usr/lib64/libkerfuffle.so.23.04.0
+/usr/lib64/libkerfuffle.so.23.04.1
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cliarj.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
