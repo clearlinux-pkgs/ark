@@ -7,7 +7,7 @@
 #
 Name     : ark
 Version  : 23.04.1
-Release  : 71
+Release  : 72
 URL      : https://download.kde.org/stable/release-service/23.04.1/src/ark-23.04.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.1/src/ark-23.04.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.1/src/ark-23.04.1.tar.xz.sig
@@ -105,7 +105,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684784150
+export SOURCE_DATE_EPOCH=1685478864
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -138,7 +138,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684784150
+export SOURCE_DATE_EPOCH=1685478864
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp %{_builddir}/ark-%{version}/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01 || :
@@ -238,7 +238,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libkerfuffle.so.23
 /V3/usr/lib64/libkerfuffle.so.23.04.1
 /V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cliarj.so
