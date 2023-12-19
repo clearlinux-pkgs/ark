@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ark
-Version  : 23.08.3
-Release  : 79
-URL      : https://download.kde.org/stable/release-service/23.08.3/src/ark-23.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.08.3/src/ark-23.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.08.3/src/ark-23.08.3.tar.xz.sig
+Version  : 23.08.4
+Release  : 80
+URL      : https://download.kde.org/stable/release-service/23.08.4/src/ark-23.08.4.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.4/src/ark-23.08.4.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.4/src/ark-23.08.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 GPL-2.0 LGPL-3.0 MIT
@@ -99,15 +99,15 @@ man components for the ark package.
 
 
 %prep
-%setup -q -n ark-23.08.3
-cd %{_builddir}/ark-23.08.3
+%setup -q -n ark-23.08.4
+cd %{_builddir}/ark-23.08.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1701933869
+export SOURCE_DATE_EPOCH=1702946257
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -166,7 +166,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1701933869
+export SOURCE_DATE_EPOCH=1702946257
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp %{_builddir}/ark-%{version}/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01 || :
@@ -267,7 +267,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libkerfuffle.so.23.08.3
+/V3/usr/lib64/libkerfuffle.so.23.08.4
 /V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cliarj.so
 /V3/usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
@@ -281,7 +281,7 @@ popd
 /V3/usr/lib64/qt5/plugins/kf5/kio_dnd/extracthere.so
 /V3/usr/lib64/qt5/plugins/kf5/parts/arkpart.so
 /usr/lib64/libkerfuffle.so.23
-/usr/lib64/libkerfuffle.so.23.08.3
+/usr/lib64/libkerfuffle.so.23.08.4
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cli7z.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_cliarj.so
 /usr/lib64/qt5/plugins/kerfuffle/kerfuffle_clirar.so
