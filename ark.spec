@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ark
-Version  : 24.02.2
-Release  : 85
-URL      : https://download.kde.org/stable/release-service/24.02.2/src/ark-24.02.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/24.02.2/src/ark-24.02.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/24.02.2/src/ark-24.02.2.tar.xz.sig
+Version  : 24.05.0
+Release  : 86
+URL      : https://download.kde.org/stable/release-service/24.05.0/src/ark-24.05.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/24.05.0/src/ark-24.05.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/24.05.0/src/ark-24.05.0.tar.xz.sig
 Source2  : BB463350D6EF31EF.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -114,15 +114,15 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) BB463350D6EF31EF' gpg.status
-%setup -q -n ark-24.02.2
-cd %{_builddir}/ark-24.02.2
+%setup -q -n ark-24.05.0
+cd %{_builddir}/ark-24.05.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1713221250
+export SOURCE_DATE_EPOCH=1716514079
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -183,7 +183,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1713221250
+export SOURCE_DATE_EPOCH=1716514079
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ark
 cp %{_builddir}/ark-%{version}/COPYING.icons %{buildroot}/usr/share/package-licenses/ark/69420a3ad87532e76ad02ac77b78f5dfff3cfc01 || :
@@ -280,7 +280,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libkerfuffle.so.24.02.2
+/V3/usr/lib64/libkerfuffle.so.24.05.0
 /V3/usr/lib64/qt6/plugins/kerfuffle/kerfuffle_cli7z.so
 /V3/usr/lib64/qt6/plugins/kerfuffle/kerfuffle_cliarj.so
 /V3/usr/lib64/qt6/plugins/kerfuffle/kerfuffle_clirar.so
@@ -294,7 +294,7 @@ popd
 /V3/usr/lib64/qt6/plugins/kf6/kio_dnd/extracthere.so
 /V3/usr/lib64/qt6/plugins/kf6/parts/arkpart.so
 /usr/lib64/libkerfuffle.so.24
-/usr/lib64/libkerfuffle.so.24.02.2
+/usr/lib64/libkerfuffle.so.24.05.0
 /usr/lib64/qt6/plugins/kerfuffle/kerfuffle_cli7z.so
 /usr/lib64/qt6/plugins/kerfuffle/kerfuffle_cliarj.so
 /usr/lib64/qt6/plugins/kerfuffle/kerfuffle_clirar.so
